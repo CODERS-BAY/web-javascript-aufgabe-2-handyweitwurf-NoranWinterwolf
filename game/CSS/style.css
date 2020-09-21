@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    width: 97vw;
+    min-height: 140vh;
+    background-color: rgb(74, 86, 87);
+    border: 10px dashed rgba(29, 29, 29, 0.315);
+}
+
+#game {
+    position: absolute;
+    height: 500px;
+    width: 96%;
+    background-color: rgb(0, 30, 0);
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px inset grey;
+}
+
+#bullet {
+    position: absolute;
+    z-index: 100;
+    bottom: 0px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    border-radius: 68% 32% 56% 38%;
+    border: 5px double green;
+    background-color: rgba(0, 0, 0, 0);
+    color: green;
+    font-size: 200%;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 10px green, 0 0 10px green;
+    text-shadow: 0 0 10px green, 0 0 10px green;
+}
+
+#liveBox {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: green;
+}
+#liveBox .ammo {
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    border-radius: 68% 32% 56% 38%;
+    border: 5px double green;
+    background-color: rgba(0, 0, 0, 0);
+    color: green;
+    font-size: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 10px;
+    box-shadow: 0 0 10px green, 0 0 10px green;
+}
+#lives {
+    line-height: 1rem;
+    font-size: 130%;
+    vertical-align: bottom;
+}
+
+#aimArea {
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 0px;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0, 44, 17, 0.315);
+    border: 4px dashed green;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 0px 100% 0px 0px;
+    box-shadow: 0 0 10px green, 0 0 10px green;
+}
+
+#noAim {
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    left: 0px;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(0, 0, 0);
+    border: 1px dashed rgba(0, 0, 0, 0.432);
+    border-bottom: none;
+    border-left: none;
+    border-radius: 0px 100% 0px 0px;
+    box-shadow: 0 0 10px rgb(0, 85, 0), 0 0 10px rgb(0, 83, 0);
+}
+
+#enemy {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    padding-top: 0px;
+    bottom: 0px;
+    left: -10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 3rem;
+    color: green;
+    border: 2px dashed green;
+    box-shadow: 0 0 10px green, 0 0 10px green;
+    text-shadow: 0 0 10px green, 0 0 10px green;
+}
+
+#buttons {
+    display: flex;
+    margin: auto;
+    padding: 1rem;
+    max-width: 25%;
+    flex-direction: column;
+    position: relative;
+    top: 600px;
+    border: 5px outset grey;
+    background-color: rgb(122, 130, 131);
+}
+
+#again {
+    height: 2rem;
+    border-radius: 15px;
+    margin: 0% 20%;
+    background-color: grey;
+    font-weight: bold;
+    font-size: 130%;
+}
+
+#buttons #newPos {
+    margin: auto;
+    width: 150px;
+    height: 70px;
+    font-size: 140%;
+}
+
+#buttons #coordinates {
+    margin: auto;
+    margin-top: 1rem;
+    background-color: rgb(0, 30, 0);
+    color: green;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 120%;
+    text-shadow: 0 0 15px green, 0 0 15px green, 0 0 15px green;
+    width: 95%;
+    height: 5.5rem;
+    border: 5px inset grey;
+}
+
+#buttons #newPos {
+    background-color: rgb(28, 66, 35);
+    border-radius: 25px;
+    font-weight: 700;
+    color: white;
+    border-color: rgb(28, 66, 35);
+}
+
+#buttons #launch {
+    margin: auto;
+    margin-top: 1rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: red;
+    border-color: red;
+    font-size: 130%;
+    font-weight: bold;
+}
+
+#buttons #barBg {
+    margin: auto;
+    width: 95%;
+    height: 20px;
+    margin-top: 1rem;
+    background-color: rgb(0, 30, 0);
+    border: 5px inset grey;
+    overflow: hidden;
+}
+#buttons #bar {
+    width: 0%;
+    height: 20px;
+    background-color: red;
+}
+
+@media screen and (max-width: 700px) {
+
+    #buttons {
+        max-width: 50%;
+    }
+
+    #game {
+        margin: 0;
+        max-width: 92%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+
+    #buttons {
+        max-width: 100%;
+    }
+}
