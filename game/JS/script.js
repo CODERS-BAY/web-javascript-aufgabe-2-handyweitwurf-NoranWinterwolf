@@ -1,34 +1,19 @@
-var planet = 9.81/100;
-var posX = 0;
-var posY = 0;
-var sX = 0;
-var sY = 0;
-var x = 0;
-var y = 0;
-var showX = 0;
-var showY = 0;
-var deg = 0;
-var str = 0;
-var barStr = 0;
-var bullet = document.getElementById("bullet"), deg = 10;
-var aim = document.getElementById("aimArea");
-var launch = document.getElementById("launch");
-var newBtn = document.getElementById("newPos");
-var strBar = document.getElementById("bar");
-var coordinates = document.getElementById("coordinates");
-var gravitation = 0;
-var interval = 0;
-var barInt = 0;
-var enemyPos = 0;
-var enemy = document.getElementById("enemy");
-var coor = "";
+var planet = 9.81 / 100;
+var posX = 0, posY = 0, sX = 0, sY = 0, x = 0, y = 0;
+var showX = 0, showY = 0, deg = 0, str = 0, barStr = 0;
+var gravitation = 0, interval = 0, barInt = 0, enemyPos = 0, lives = 0, coor = "", text = "";
 var liveSymbol = document.getElementById("liveBox");
 var retry = document.getElementById("again");
-var lives = 0;
-var text = "";
+var bullet = document.getElementById("bullet"), deg = 10;
+var enemy = document.getElementById("enemy");
+var coordinates = document.getElementById("coordinates");
+var strBar = document.getElementById("bar");
+var newBtn = document.getElementById("newPos");
+var launch = document.getElementById("launch");
+var aim = document.getElementById("aimArea");
 
-retry.addEventListener("click", function() {
-    if (lives > 0 && !coor.includes("Hit!!") ) {
+retry.addEventListener("click", function () {
+    if (lives > 0 && !coor.includes("Hit!!")) {
         posX = 0;
         posY = 0;
         x = 0;
@@ -46,7 +31,7 @@ retry.addEventListener("click", function() {
     }
 })
 
-newBtn.addEventListener("click", function() {
+newBtn.addEventListener("click", function () {
     lives = 3;
     updateLives();
     liveSymbol.innerHTML = text;
@@ -67,7 +52,7 @@ newBtn.addEventListener("click", function() {
     sY = 0;
     showX = 0;
     showY = 0;
-    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX +  " -- Y: " + showY + "<br /> Str: " + str;
+    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX + " -- Y: " + showY + "<br /> Str: " + str;
     coordinates.innerHTML = coor;
     coordinates.style.lineHeight = 1.4 + "rem";
     clearInterval(interval);
@@ -76,7 +61,7 @@ newBtn.addEventListener("click", function() {
 
 aim.addEventListener("mousemove", getCoor, true);
 
-launch.addEventListener("mousedown", function(){
+launch.addEventListener("mousedown", function () {
     coordinates.style.color = "green";
     coordinates.style.lineHeight = 1.4 + "rem";
     coordinates.style.fontSize = "120%";
@@ -98,25 +83,25 @@ launch.addEventListener("mousedown", function(){
 
 function barAnim() {
     if (str != 100) {
-    str = str + 1;
-    barStr = str;
-    strBar.style.width = barStr + '%';
-    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX +  " -- Y: " + showY + "<br /> Str: " + str;
-    coordinates.innerHTML = coor;
+        str = str + 1;
+        barStr = str;
+        strBar.style.width = barStr + '%';
+        coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX + " -- Y: " + showY + "<br /> Str: " + str;
+        coordinates.innerHTML = coor;
     }
     else {
         clearInterval(barInt);
     }
 }
 
-launch.addEventListener("mouseup", function(){
+launch.addEventListener("mouseup", function () {
     clearInterval(barInt);
     barStr = 0;
     strBar.style.width = '0%';
     if (bullet.style.left == '0px' && sX != 0 && sY != 0) {
-    shoot(sY, sX, str/10);
-    lives--;
-    updateLives();
+        shoot(sY, sX, str / 10);
+        lives--;
+        updateLives();
     }
     str = 0;
 });
@@ -129,10 +114,10 @@ function getCoor(pointer) {
     coordinates.style.textShadow = "0 0 15px green, 0 0 15px green, 0 0 15px green";
     x = pointer.clientX - 15;
     y = ((pointer.clientY - 500) * -1) + 15;
-    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX +  " -- Y: " + showY + "<br /> Str: " + str;
+    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX + " -- Y: " + showY + "<br /> Str: " + str;
     coordinates.innerHTML = coor;
     aim.style.cursor = "crosshair";
-    if (sX == 0 && sY == 0) { 
+    if (sX == 0 && sY == 0) {
         aim.addEventListener("click", saveCoor);
     }
 }
@@ -142,9 +127,9 @@ function saveCoor() {
     showY = y;
     sX = 1;
     sY = y / x;
-    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX +  " -- Y: " + showY + "<br /> Str: " + str;
+    coor = "X:" + x + " -- Y: " + y + "<br />Saved Coor.:<br />X: " + showX + " -- Y: " + showY + "<br /> Str: " + str;
     coordinates.innerHTML = coor;
-} 
+}
 
 function shoot(up, left, strenght) {
     posY = 0;
@@ -156,10 +141,10 @@ function nextPos(up, left, strenght) {
         bullet.style.bottom = '-10px';
         gravitation = planet;
         clearInterval(interval);
-        if (posX + 50 >= enemyPos && posX < enemyPos + 50){
-        coor = "Hit!!";
-        coordinates.style.fontSize = "140%";
-        coordinates.style.fontWeight = "bold";
+        if (posX + 50 >= enemyPos && posX < enemyPos + 50) {
+            coor = "Hit!!";
+            coordinates.style.fontSize = "140%";
+            coordinates.style.fontWeight = "bold";
         }
         else {
             if (lives > 0) {
@@ -174,19 +159,19 @@ function nextPos(up, left, strenght) {
         coordinates.innerHTML = coor;
     }
     else {
-    gravitation += planet;
-    posY += up * strenght - gravitation;
-    posX += left * strenght;
-    bullet.style.bottom = posY + 'px';
-    bullet.style.left = posX + 'px';
-    bullet.style.transform = "rotate(" + deg + "deg)";
-    deg = (deg + 10) % 360;
+        gravitation += planet;
+        posY += up * strenght - gravitation;
+        posX += left * strenght;
+        bullet.style.bottom = posY + 'px';
+        bullet.style.left = posX + 'px';
+        bullet.style.transform = "rotate(" + deg + "deg)";
+        deg = (deg + 10) % 360;
     }
 }
 
 function updateLives() {
     text = "";
-    for (i = 0; i < lives; i++){
+    for (i = 0; i < lives; i++) {
         text += "<span class='ammo'>X</span> ";
     }
     liveSymbol.innerHTML = text;
